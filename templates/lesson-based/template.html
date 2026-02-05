@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- CUSTOMIZATION POINT: Change the title to match your topic -->
+  <title>German B1 Learning App Template</title>
+  
+  <!-- Google Fonts: Playfair Display (serif titles), Source Sans 3 (body), Fira Code (mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ========================================
+       THEME: Light/Elegant (Lesson-Based)
+       For reading-heavy, grammar-focused content
+       ======================================== */
+    
+    :root {
+      /* Base Colors */
+      --cream: #faf6f0;
+      --cream-dark: #f0ebe3;
+      --parchment: #e8e0d4;
+      
+      /* Text Colors */
+      --ink: #2c2420;
+      --ink-light: #5a4f46;
+      --ink-faint: #8a7f74;
+      --ink-ghost: #b8afa5;
+      --ink-whisper: #d4cdc5;
+      
+      /* CUSTOMIZATION POINT: Semantic colors for your topic
+         Change these to match your content (e.g., two contrasting concepts) */
+      --accent-1-color: #c0582e;
+      --accent-1-bg: #fdf0ea;
+      --accent-1-border: #e8c4b2;
+      
+      --accent-2-color: #2e6b8a;
+      --accent-2-bg: #eaf3f8;
+      --accent-2-border: #b2d0e0;
+      
+      /* Feedback Colors */
+      --correct: #4a7c59;
+      --correct-bg: #eef5f0;
+      --incorrect: #a84032;
+      --incorrect-bg: #fdf0ee;
+      --gold: #b8943e;
+      --gold-bg: #faf5e8;
+      
+      /* Shadows */
+      --shadow: 0 2px 12px rgba(44,36,32,.06);
+      --shadow-lg: 0 8px 32px rgba(44,36,32,.08);
+      
+      /* Typography */
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Fira Code', 'Courier New', monospace;
+    }
+    
+    /* ========================================
+       BASE STYLES
+       ======================================== */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    
+    /* ========================================
+       CONTAINER & LAYOUT
+       ======================================== */
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* ========================================
+       HEADER
+       ======================================== */
+    
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--parchment);
+    }
+    
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--ink-light);
+      font-weight: 400;
+    }
+    
+    /* ========================================
+       PROGRESS INDICATORS
+       Shows which lesson the user is on
+       ======================================== */
+    
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--parchment);
+      transition: all 0.3s ease;
+    }
+    
+    .progress-dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+    
+    .progress-dot.completed {
+      background: var(--correct);
+    }
+    
+    /* ========================================
+       LESSON CARD
+       Main container for lesson content
+       ======================================== */
+    
+    .lesson {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .lesson-number {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .lesson-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2rem;
+      line-height: 1.3;
+    }
+    
+    /* ========================================
+       CONTENT BUILDING BLOCKS
+       Reusable components for lesson content
+       ======================================== */
+    
+    /* General explanation sections */
+    .explain {
+      margin-bottom: 2rem;
+    }
+    
+    .explain h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    
+    .explain p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink-light);
+    }
+    
+    /* Highlighted grammar rules */
+    .rule-box {
+      background: var(--cream-dark);
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .rule-box.rule-accent-1 {
+      background: var(--accent-1-bg);
+      border-color: var(--accent-1-color);
+    }
+    
+    .rule-box.rule-accent-2 {
+      background: var(--accent-2-bg);
+      border-color: var(--accent-2-color);
+    }
+    
+    .rule-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .rule-accent-1 .rule-label {
+      color: var(--accent-1-color);
+    }
+    
+    .rule-accent-2 .rule-label {
+      color: var(--accent-2-color);
+    }
+    
+    .rule-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    
+    /* Bilingual example sentences */
+    .example {
+      background: var(--cream-dark);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .example .de {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    
+    .example .en {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      font-style: italic;
+    }
+    
+    /* Memory aids and helpful tips */
+    .tip {
+      background: var(--gold-bg);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--ink-light);
+    }
+    
+    /* Comparison tables */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .compare-table th {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 1rem;
+      text-align: left;
+    }
+    
+    .compare-table td {
+      padding: 1rem;
+      border-top: 1px solid var(--parchment);
+    }
+    
+    .compare-table .col-accent-1 {
+      background: var(--accent-1-bg);
+      color: var(--accent-1-color);
+    }
+    
+    .compare-table .col-accent-2 {
+      background: var(--accent-2-bg);
+      color: var(--accent-2-color);
+    }
+    
+    /* Visual separator between sections */
+    .section-sep {
+      height: 1px;
+      background: var(--parchment);
+      margin: 2rem 0;
+    }
+    
+    /* ========================================
+       EXERCISES
+       Interactive practice components
+       ======================================== */
+    
+    .exercise {
+      background: var(--cream-dark);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .exercise.answered {
+      background: white;
+      border: 2px solid var(--parchment);
+    }
+    
+    .exercise.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+    }
+    
+    .exercise.incorrect {
+      background: var(--incorrect-bg);
+      border-color: var(--incorrect);
+    }
+    
+    .exercise-instruction {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .exercise-sentence {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    
+    .exercise-options {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    
+    /* Multiple choice buttons */
+    .option-btn {
+      background: var(--cream);
+      border: 2px solid var(--ink-whisper);
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      font-family: var(--font-sans);
+    }
+    
+    .option-btn:hover {
+      background: white;
+      border-color: var(--ink-faint);
+      transform: translateY(-2px);
+    }
+    
+    .option-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    
+    .option-btn.selected {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+    
+    .option-btn.correct {
+      background: var(--correct);
+      color: white;
+      border-color: var(--correct);
+    }
+    
+    .option-btn.incorrect {
+      background: var(--incorrect);
+      color: white;
+      border-color: var(--incorrect);
+    }
+    
+    /* Fill-in-the-blank input */
+    .fill-input {
+      background: white;
+      border: 2px solid var(--ink-whisper);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      min-width: 150px;
+      transition: all 0.2s ease;
+    }
+    
+    .fill-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184, 148, 62, 0.1);
+    }
+    
+    .fill-input.correct {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+    }
+    
+    .fill-input.incorrect {
+      border-color: var(--incorrect);
+      background: var(--incorrect-bg);
+    }
+    
+    .check-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.95rem;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+    }
+    
+    .check-btn:hover {
+      background: var(--accent-1-color);
+      transform: translateY(-2px);
+    }
+    
+    .check-btn:disabled {
+      background: var(--ink-ghost);
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    /* True/False buttons */
+    .truefalse-options {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .truefalse-btn {
+      flex: 1;
+      background: var(--cream);
+      border: 2px solid var(--ink-whisper);
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+      color: var(--ink);
+    }
+    
+    .truefalse-btn:hover {
+      background: white;
+      border-color: var(--ink-faint);
+      transform: translateY(-2px);
+    }
+    
+    .truefalse-btn.selected {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+    
+    .truefalse-btn.correct {
+      background: var(--correct);
+      color: white;
+      border-color: var(--correct);
+    }
+    
+    .truefalse-btn.incorrect {
+      background: var(--incorrect);
+      color: white;
+      border-color: var(--incorrect);
+    }
+    
+    /* Exercise feedback messages */
+    .exercise-feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      display: none;
+    }
+    
+    .exercise-feedback.show {
+      display: block;
+    }
+    
+    .exercise-feedback.correct {
+      background: var(--correct-bg);
+      color: var(--correct);
+      border: 1px solid var(--correct);
+    }
+    
+    .exercise-feedback.incorrect {
+      background: var(--incorrect-bg);
+      color: var(--incorrect);
+      border: 1px solid var(--incorrect);
+    }
+    
+    /* ========================================
+       NAVIGATION
+       Previous/Next lesson buttons
+       ======================================== */
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .nav-btn {
+      flex: 1;
+      max-width: 200px;
+      background: var(--cream-dark);
+      border: 2px solid var(--parchment);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+    }
+    
+    .nav-btn:hover:not(:disabled) {
+      background: white;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
+    .nav-btn.btn-next {
+      margin-left: auto;
+    }
+    
+    /* ========================================
+       RESULTS SCREEN
+       Shown after final assessment
+       ======================================== */
+    
+    .results {
+      display: none;
+      background: white;
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .results.show {
+      display: block;
+    }
+    
+    .results h2 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    
+    .score-circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: var(--gold-bg);
+      border: 8px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem auto;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .score-value {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    
+    .score-label {
+      font-size: 1.1rem;
+      color: var(--ink-light);
+      margin-bottom: 2rem;
+    }
+    
+    .restart-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: 12px;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+      box-shadow: var(--shadow);
+    }
+    
+    .restart-btn:hover {
+      background: var(--accent-1-color);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* ========================================
+       RESPONSIVE DESIGN
+       Mobile-friendly adjustments
+       ======================================== */
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .lesson {
+        padding: 1.5rem;
+      }
+      
+      .lesson-title {
+        font-size: 1.5rem;
+      }
+      
+      .nav-buttons {
+        flex-direction: column;
+      }
+      
+      .nav-btn {
+        max-width: 100%;
+      }
+      
+      .compare-table {
+        font-size: 0.9rem;
+      }
+      
+      .compare-table th,
+      .compare-table td {
+        padding: 0.75rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .exercise-options {
+        flex-direction: column;
+      }
+      
+      .option-btn {
+        width: 100%;
+      }
+      
+      .score-circle {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .score-value {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER SECTION -->
+    <header>
+      <!-- CUSTOMIZATION POINT: Change the main title and subtitle -->
+      <h1>German Grammar Topic</h1>
+      <p class="subtitle">B1 Level — Interactive Learning</p>
+    </header>
+    
+    <!-- PROGRESS INDICATOR -->
+    <div class="progress-dots" id="progressDots"></div>
+    
+    <!-- LESSON CONTAINER -->
+    <div id="lessonContainer"></div>
+    
+    <!-- NAVIGATION BUTTONS -->
+    <div class="nav-buttons">
+      <button class="nav-btn" id="prevBtn" onclick="prevLesson()" disabled>← Zurück</button>
+      <button class="nav-btn btn-next" id="nextBtn" onclick="nextLesson()">Weiter →</button>
+    </div>
+    
+    <!-- RESULTS SCREEN (shown after final assessment) -->
+    <div class="results" id="resultsScreen">
+      <h2>Glückwunsch!</h2>
+      <div class="score-circle">
+        <span class="score-value" id="finalScore">0%</span>
+      </div>
+      <p class="score-label">Du hast den Test abgeschlossen</p>
+      <button class="restart-btn" onclick="restart()">Neu starten</button>
+    </div>
+  </div>
+
+  <script>
+    /* ========================================
+       DATA SECTION
+       
+       CUSTOMIZATION POINT: This is where you define your lessons!
+       
+       Each lesson has:
+       - number: "Lektion 1", "Lektion 2", or "Abschlusstest" for final assessment
+       - title: Descriptive lesson title
+       - content: HTML content using the building blocks (explain, rule-box, example, tip, compare-table)
+       - exercises: Array of exercise objects
+       
+       Exercise types:
+       - "choice": Multiple choice (default) - requires options array
+       - "fill": Fill-in-the-blank - user types the answer
+       - "truefalse": True/false question - answer should be "richtig" or "falsch"
+       ======================================== */
+    
+    const lessons = [
+      {
+        number: "Lektion 1",
+        title: "Introduction to the Topic",
+        content: `
+          <div class="explain">
+            <h3>Welcome to This Learning Module</h3>
+            <p>This is a template for creating <strong>lesson-based German learning apps</strong>. 
+            Each lesson teaches one focused concept with examples and practice exercises.</p>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">EXAMPLE RULE</div>
+            <div class="rule-text">This is how you highlight an important grammar rule or pattern. 
+            Use <strong>bold</strong> for emphasis and keep explanations clear and concise.</div>
+          </div>
+          
+          <div class="example">
+            <div class="de">Das ist ein Beispielsatz auf Deutsch.</div>
+            <div class="en">This is an example sentence in German.</div>
+          </div>
+          
+          <div class="tip">💡 Use tips to provide memory aids, mnemonics, or helpful hints 
+          that make concepts easier to remember.</div>
+        `,
+        exercises: [
+          {
+            type: "choice",
+            sentence: "Example sentence with a ___ to fill.",
+            answer: "blank",
+            options: ["blank", "space", "gap"],
+            explain: "This explains why 'blank' is the correct answer. Always provide clear explanations!",
+            instruction: "Wählen Sie die richtige Antwort"
+          },
+          {
+            type: "choice",
+            sentence: "Another example ___ multiple choice.",
+            answer: "with",
+            options: ["with", "without", "for"],
+            explain: "The word 'with' fits the context best."
+          }
+        ]
+      },
+      
+      {
+        number: "Lektion 2",
+        title: "Contrasting Concepts",
+        content: `
+          <div class="explain">
+            <h3>Comparing Two Related Ideas</h3>
+            <p>When teaching contrasts (like als vs. wenn, seit vs. vor), use color-coded 
+            rule boxes and comparison tables to make differences clear.</p>
+          </div>
+          
+          <div class="rule-box rule-accent-1">
+            <div class="rule-label">CONCEPT A</div>
+            <div class="rule-text">Explanation of the first concept. Use <strong>accent-1</strong> styling 
+            for one side of the contrast.</div>
+          </div>
+          
+          <div class="rule-box rule-accent-2">
+            <div class="rule-label">CONCEPT B</div>
+            <div class="rule-text">Explanation of the second concept. Use <strong>accent-2</strong> styling 
+            for the other side of the contrast.</div>
+          </div>
+          
+          <table class="compare-table">
+            <tr>
+              <th class="col-accent-1">Concept A Signals</th>
+              <th class="col-accent-2">Concept B Signals</th>
+            </tr>
+            <tr>
+              <td class="col-accent-1">Signal word 1, Signal word 2</td>
+              <td class="col-accent-2">Signal word 3, Signal word 4</td>
+            </tr>
+            <tr>
+              <td class="col-accent-1">Example context A</td>
+              <td class="col-accent-2">Example context B</td>
+            </tr>
+          </table>
+          
+          <div class="section-sep"></div>
+          
+          <div class="example">
+            <div class="de">Beispiel für Konzept A in einem Satz.</div>
+            <div class="en">Example for Concept A in a sentence.</div>
+          </div>
+          
+          <div class="example">
+            <div class="de">Beispiel für Konzept B in einem anderen Satz.</div>
+            <div class="en">Example for Concept B in a different sentence.</div>
+          </div>
+        `,
+        exercises: [
+          {
+            type: "fill",
+            sentence: "Type your answer in the ___ box.",
+            answer: "fill",
+            explain: "Fill-in exercises require users to type the correct word or phrase.",
+            instruction: "Ergänzen Sie"
+          },
+          {
+            type: "truefalse",
+            sentence: "This template supports three exercise types: choice, fill, and truefalse.",
+            answer: "richtig",
+            explain: "That's correct! These are the three main exercise types in this template."
+          }
+        ]
+      },
+      
+      {
+        number: "Lektion 3",
+        title: "Advanced Practice",
+        content: `
+          <div class="explain">
+            <h3>Mixing Exercise Types</h3>
+            <p>Later lessons should combine different exercise types to keep learners engaged. 
+            Mix multiple choice, fill-in-the-blank, and true/false questions.</p>
+          </div>
+          
+          <div class="tip">
+            📚 <strong>Best Practice:</strong> Include 5-7 exercises per lesson. Start with 
+            easier examples and gradually increase difficulty within each lesson.
+          </div>
+        `,
+        exercises: [
+          {
+            type: "choice",
+            sentence: "I ___ to the store yesterday.",
+            answer: "went",
+            options: ["go", "went", "gone"],
+            explain: "Use past tense 'went' for completed actions in the past."
+          },
+          {
+            type: "fill",
+            sentence: "She has ___ to Berlin three times.",
+            answer: "been",
+            explain: "Use 'been' with the present perfect for life experiences."
+          },
+          {
+            type: "truefalse",
+            sentence: "German verbs always come at the end of the sentence.",
+            answer: "falsch",
+            explain: "That's false. In main clauses, the verb is in the second position. Only in subordinate clauses does the verb move to the end."
+          },
+          {
+            type: "choice",
+            sentence: "They ___ watching TV when I called.",
+            answer: "were",
+            options: ["was", "were", "are"],
+            explain: "'They' requires the plural form 'were'."
+          },
+          {
+            type: "fill",
+            sentence: "If it rains tomorrow, we ___ stay home.",
+            answer: "will",
+            explain: "Use 'will' for future conditional statements."
+          }
+        ]
+      },
+      
+      {
+        number: "Abschlusstest",
+        title: "Final Assessment",
+        content: `
+          <div class="explain">
+            <h3>Test Your Knowledge</h3>
+            <p>This final assessment mixes all concepts from previous lessons. Answer each 
+            question carefully and review the explanations to reinforce your learning.</p>
+          </div>
+          
+          <div class="tip">
+            🎯 <strong>Tip:</strong> The final assessment should include 10-15 exercises 
+            covering all major concepts from the previous lessons. This is marked as 
+            "Abschlusstest" to trigger the results screen at the end.
+          </div>
+        `,
+        exercises: [
+          {
+            sentence: "Final test question number ___.",
+            answer: "one",
+            options: ["one", "two", "three"],
+            explain: "This is the first question in the final test."
+          },
+          {
+            type: "fill",
+            sentence: "The ___ assessment tests everything you learned.",
+            answer: "final",
+            explain: "The word 'final' indicates this is the last comprehensive test."
+          },
+          {
+            type: "truefalse",
+            sentence: "You should include 10-15 exercises in the final assessment.",
+            answer: "richtig",
+            explain: "Correct! A comprehensive final test should have 10-15 mixed exercises."
+          },
+          {
+            sentence: "Mix different ___ types in the final test.",
+            answer: "exercise",
+            options: ["exercise", "lesson", "concept"],
+            explain: "Variety in exercise types keeps the assessment engaging."
+          },
+          {
+            type: "fill",
+            sentence: "Always provide clear ___ for each answer.",
+            answer: "explanations",
+            explain: "Explanations help learners understand their mistakes and reinforce correct answers."
+          },
+          {
+            type: "truefalse",
+            sentence: "The results screen automatically appears after 'Abschlusstest'.",
+            answer: "richtig",
+            explain: "Yes! When the lesson number is 'Abschlusstest', the app shows the results screen after completion."
+          },
+          {
+            sentence: "This template uses ___ colors for semantic concepts.",
+            answer: "accent",
+            options: ["accent", "primary", "random"],
+            explain: "Accent colors (accent-1 and accent-2) help distinguish between contrasting concepts."
+          },
+          {
+            type: "fill",
+            sentence: "The Light/Elegant theme is best for ___ content.",
+            answer: "reading-heavy",
+            explain: "The cream/parchment palette is designed for grammar-focused apps with lots of text."
+          },
+          {
+            type: "truefalse",
+            sentence: "Each lesson should focus on just one main concept.",
+            answer: "richtig",
+            explain: "Correct! Keep lessons focused on one concept for better retention."
+          },
+          {
+            sentence: "Remember to ___ your app for mobile devices.",
+            answer: "test",
+            options: ["test", "ignore", "avoid"],
+            explain: "Always test responsiveness on mobile, tablet, and desktop screens."
+          }
+        ]
+      }
+    ];
+    
+    /* ========================================
+       APP STATE
+       Tracks current lesson and scores
+       ======================================== */
+    
+    let currentLesson = 0;
+    let scores = {};  // Tracks score for each lesson by index
+    
+    /* ========================================
+       INITIALIZATION
+       Runs when page loads
+       ======================================== */
+    
+    function init() {
+      renderProgressDots();
+      renderLesson();
+      updateNavButtons();
+    }
+    
+    /* ========================================
+       PROGRESS DOTS RENDERING
+       Shows visual indicator of lesson progress
+       ======================================== */
+    
+    function renderProgressDots() {
+      const dotsContainer = document.getElementById('progressDots');
+      dotsContainer.innerHTML = lessons.map((_, index) => {
+        let className = 'progress-dot';
+        if (index < currentLesson) className += ' completed';
+        if (index === currentLesson) className += ' active';
+        return `<div class="${className}"></div>`;
+      }).join('');
+    }
+    
+    /* ========================================
+       LESSON RENDERING
+       Displays current lesson content and exercises
+       ======================================== */
+    
+    function renderLesson() {
+      const lesson = lessons[currentLesson];
+      const container = document.getElementById('lessonContainer');
+      
+      let html = `
+        <div class="lesson">
+          <div class="lesson-number">${lesson.number}</div>
+          <h2 class="lesson-title">${lesson.title}</h2>
+          ${lesson.content}
+          <div class="section-sep"></div>
+      `;
+      
+      // Render exercises
+      lesson.exercises.forEach((ex, index) => {
+        const exId = `ex-${currentLesson}-${index}`;
+        const type = ex.type || 'choice';
+        const instruction = ex.instruction || getDefaultInstruction(type);
+        
+        html += `
+          <div class="exercise" id="${exId}">
+            <div class="exercise-instruction">${instruction}</div>
+            <div class="exercise-sentence">${ex.sentence}</div>
+        `;
+        
+        if (type === 'choice') {
+          const options = ex.options || ['als', 'wenn'];
+          html += '<div class="exercise-options">';
+          options.forEach(opt => {
+            html += `<button class="option-btn" onclick="answerChoice('${exId}', '${opt}', ${currentLesson}, ${index})">${opt}</button>`;
+          });
+          html += '</div>';
+        } else if (type === 'fill') {
+          html += `
+            <div class="exercise-options">
+              <input type="text" class="fill-input" id="${exId}-input" placeholder="Ihre Antwort">
+              <button class="check-btn" onclick="answerFill('${exId}', ${currentLesson}, ${index})">Prüfen</button>
+            </div>
+          `;
+        } else if (type === 'truefalse') {
+          html += `
+            <div class="exercise-options truefalse-options">
+              <button class="truefalse-btn" onclick="answerTrueFalse('${exId}', 'richtig', ${currentLesson}, ${index})">✓ Richtig</button>
+              <button class="truefalse-btn" onclick="answerTrueFalse('${exId}', 'falsch', ${currentLesson}, ${index})">✗ Falsch</button>
+            </div>
+          `;
+        }
+        
+        html += `
+            <div class="exercise-feedback" id="${exId}-feedback"></div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    
+    /* ========================================
+       HELPER: Get default instruction for exercise type
+       ======================================== */
+    
+    function getDefaultInstruction(type) {
+      const instructions = {
+        choice: 'Wählen Sie die richtige Antwort',
+        fill: 'Ergänzen Sie',
+        truefalse: 'Richtig oder falsch?'
+      };
+      return instructions[type] || 'Wählen Sie die richtige Antwort';
+    }
+    
+    /* ========================================
+       EXERCISE HANDLERS
+       Handle user interactions with exercises
+       ======================================== */
+    
+    function answerChoice(exId, selected, lessonIdx, exIdx) {
+      const exercise = lessons[lessonIdx].exercises[exIdx];
+      const exDiv = document.getElementById(exId);
+      const feedback = document.getElementById(`${exId}-feedback`);
+      const buttons = exDiv.querySelectorAll('.option-btn');
+      
+      // Disable all buttons
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        if (btn.textContent.trim() === selected) {
+          btn.classList.add('selected');
+        }
+      });
+      
+      // Check answer
+      const isCorrect = selected.toLowerCase().trim() === exercise.answer.toLowerCase().trim();
+      
+      // Update exercise and feedback
+      exDiv.classList.add('answered', isCorrect ? 'correct' : 'incorrect');
+      feedback.className = `exercise-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      feedback.innerHTML = isCorrect 
+        ? `✓ Richtig! ${exercise.explain}`
+        : `✗ Die richtige Antwort ist "${exercise.answer}". ${exercise.explain}`;
+      
+      // Highlight correct answer
+      buttons.forEach(btn => {
+        if (btn.textContent.trim() === exercise.answer) {
+          btn.classList.add('correct');
+        } else if (btn.textContent.trim() === selected && !isCorrect) {
+          btn.classList.add('incorrect');
+        }
+      });
+      
+      // Update score
+      updateScore(lessonIdx, exIdx, isCorrect);
+    }
+    
+    function answerFill(exId, lessonIdx, exIdx) {
+      const exercise = lessons[lessonIdx].exercises[exIdx];
+      const exDiv = document.getElementById(exId);
+      const input = document.getElementById(`${exId}-input`);
+      const feedback = document.getElementById(`${exId}-feedback`);
+      const checkBtn = exDiv.querySelector('.check-btn');
+      
+      const userAnswer = input.value.trim().toLowerCase();
+      const correctAnswer = exercise.answer.toLowerCase();
+      
+      // Check answer (normalize for comparison)
+      const isCorrect = userAnswer === correctAnswer;
+      
+      // Disable input and button
+      input.disabled = true;
+      checkBtn.disabled = true;
+      
+      // Update styling
+      exDiv.classList.add('answered', isCorrect ? 'correct' : 'incorrect');
+      input.classList.add(isCorrect ? 'correct' : 'incorrect');
+      feedback.className = `exercise-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      feedback.innerHTML = isCorrect 
+        ? `✓ Richtig! ${exercise.explain}`
+        : `✗ Die richtige Antwort ist "${exercise.answer}". ${exercise.explain}`;
+      
+      // Update score
+      updateScore(lessonIdx, exIdx, isCorrect);
+    }
+    
+    function answerTrueFalse(exId, selected, lessonIdx, exIdx) {
+      const exercise = lessons[lessonIdx].exercises[exIdx];
+      const exDiv = document.getElementById(exId);
+      const feedback = document.getElementById(`${exId}-feedback`);
+      const buttons = exDiv.querySelectorAll('.truefalse-btn');
+      
+      // Disable buttons and mark selection
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        const btnValue = btn.textContent.includes('Richtig') ? 'richtig' : 'falsch';
+        if (btnValue === selected) {
+          btn.classList.add('selected');
+        }
+      });
+      
+      // Check answer
+      const isCorrect = selected.toLowerCase() === exercise.answer.toLowerCase();
+      
+      // Update exercise and feedback
+      exDiv.classList.add('answered', isCorrect ? 'correct' : 'incorrect');
+      feedback.className = `exercise-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      feedback.innerHTML = isCorrect 
+        ? `✓ Richtig! ${exercise.explain}`
+        : `✗ ${exercise.explain}`;
+      
+      // Highlight correct/incorrect buttons
+      buttons.forEach(btn => {
+        const btnValue = btn.textContent.includes('Richtig') ? 'richtig' : 'falsch';
+        if (btnValue === exercise.answer.toLowerCase()) {
+          btn.classList.add('correct');
+        } else if (btnValue === selected && !isCorrect) {
+          btn.classList.add('incorrect');
+        }
+      });
+      
+      // Update score
+      updateScore(lessonIdx, exIdx, isCorrect);
+    }
+    
+    /* ========================================
+       SCORE TRACKING
+       Tracks which exercises were answered correctly
+       ======================================== */
+    
+    function updateScore(lessonIdx, exIdx, isCorrect) {
+      if (!scores[lessonIdx]) {
+        scores[lessonIdx] = {};
+      }
+      scores[lessonIdx][exIdx] = isCorrect;
+    }
+    
+    function getLessonScore(lessonIdx) {
+      if (!scores[lessonIdx]) return 0;
+      const answers = Object.values(scores[lessonIdx]);
+      if (answers.length === 0) return 0;
+      const correct = answers.filter(a => a).length;
+      return Math.round((correct / answers.length) * 100);
+    }
+    
+    function getTotalScore() {
+      let totalCorrect = 0;
+      let totalAnswered = 0;
+      
+      Object.values(scores).forEach(lessonScores => {
+        Object.values(lessonScores).forEach(isCorrect => {
+          totalAnswered++;
+          if (isCorrect) totalCorrect++;
+        });
+      });
+      
+      return totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+    }
+    
+    /* ========================================
+       NAVIGATION
+       Move between lessons
+       ======================================== */
+    
+    function nextLesson() {
+      // Check if this is the final assessment
+      if (lessons[currentLesson].number === 'Abschlusstest') {
+        showResults();
+        return;
+      }
+      
+      if (currentLesson < lessons.length - 1) {
+        currentLesson++;
+        renderProgressDots();
+        renderLesson();
+        updateNavButtons();
+        window.scrollTo(0, 0);
+      }
+    }
+    
+    function prevLesson() {
+      if (currentLesson > 0) {
+        currentLesson--;
+        renderProgressDots();
+        renderLesson();
+        updateNavButtons();
+        window.scrollTo(0, 0);
+      }
+    }
+    
+    function updateNavButtons() {
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      prevBtn.disabled = currentLesson === 0;
+      
+      // Change text for final lesson
+      if (lessons[currentLesson].number === 'Abschlusstest') {
+        nextBtn.textContent = 'Ergebnisse anzeigen →';
+      } else {
+        nextBtn.textContent = 'Weiter →';
+      }
+    }
+    
+    /* ========================================
+       RESULTS SCREEN
+       Show final score after assessment
+       ======================================== */
+    
+    function showResults() {
+      document.getElementById('lessonContainer').style.display = 'none';
+      document.querySelector('.nav-buttons').style.display = 'none';
+      document.getElementById('progressDots').style.display = 'none';
+      
+      const resultsScreen = document.getElementById('resultsScreen');
+      const scoreDisplay = document.getElementById('finalScore');
+      
+      scoreDisplay.textContent = getTotalScore() + '%';
+      resultsScreen.classList.add('show');
+    }
+    
+    function restart() {
+      currentLesson = 0;
+      scores = {};
+      
+      document.getElementById('lessonContainer').style.display = 'block';
+      document.querySelector('.nav-buttons').style.display = 'flex';
+      document.getElementById('progressDots').style.display = 'flex';
+      document.getElementById('resultsScreen').classList.remove('show');
+      
+      renderProgressDots();
+      renderLesson();
+      updateNavButtons();
+      window.scrollTo(0, 0);
+    }
+    
+    /* ========================================
+       START THE APP
+       ======================================== */
+    
+    init();
+  </script>
+</body>
+</html>

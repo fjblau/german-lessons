@@ -1,0 +1,138 @@
+/**
+ * Matching Exercise Styles
+ * German: "Zuordnung" / "Ordnen Sie zu"
+ */
+
+/* Matching Container */
+.matching-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .matching-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Left Side (Prompt) */
+.match-left {
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 2px solid var(--ink-whisper);
+  position: relative;
+}
+
+.match-left::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1rem;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2px;
+  background: var(--ink-whisper);
+  display: none;
+}
+
+@media (min-width: 641px) {
+  .match-left::before {
+    display: block;
+  }
+}
+
+.match-item {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .match-item {
+    font-size: 1.1rem;
+  }
+}
+
+/* Right Side (Options) */
+.match-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Match Option Button */
+.match-option {
+  background: var(--cream);
+  border: 2px solid var(--ink-whisper);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-weight: 500;
+  font-family: inherit;
+  position: relative;
+}
+
+.match-option:hover:not(:disabled) {
+  border-color: var(--ink-light);
+  transform: translateX(4px);
+  box-shadow: var(--shadow);
+}
+
+.match-option:focus {
+  outline: 3px solid var(--ink-light);
+  outline-offset: 2px;
+}
+
+.match-option.selected {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+.match-option.correct {
+  background: var(--correct);
+  color: white;
+  border-color: var(--correct);
+}
+
+.match-option.incorrect {
+  background: var(--incorrect);
+  color: white;
+  border-color: var(--incorrect);
+}
+
+.match-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Arrow indicator for selected option */
+.match-option.selected::before {
+  content: '←';
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .match-option.selected::before {
+    content: '✓';
+    left: 0.5rem;
+    position: relative;
+    transform: none;
+  }
+}

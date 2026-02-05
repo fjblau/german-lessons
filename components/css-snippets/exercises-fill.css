@@ -1,0 +1,73 @@
+/**
+ * Fill-in-the-Blank Exercise Styles
+ * German: "Lückentext" / "Ergänzen Sie"
+ */
+
+/* Fill Exercise Sentence (with inline input) */
+.exercise-sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.sentence-part {
+  display: inline;
+}
+
+/* Fill Input Field */
+.fill-input {
+  background: white;
+  border: 2px solid var(--ink-whisper);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--ink);
+  min-width: 120px;
+  transition: border-color 0.2s ease;
+}
+
+@media (max-width: 640px) {
+  .fill-input {
+    min-width: 100px;
+    font-size: 0.95rem;
+  }
+}
+
+.fill-input::placeholder {
+  color: var(--ink-ghost);
+}
+
+.fill-input:focus {
+  outline: none;
+  border-color: var(--ink-light);
+  box-shadow: 0 0 0 3px rgba(44, 36, 32, 0.1);
+}
+
+.fill-input:disabled {
+  background: var(--cream-dark);
+  cursor: not-allowed;
+  color: var(--ink);
+}
+
+.fill-input.correct {
+  border-color: var(--correct);
+  background: var(--correct-bg);
+  font-weight: 600;
+}
+
+.fill-input.incorrect {
+  border-color: var(--incorrect);
+  background: var(--incorrect-bg);
+  font-weight: 600;
+}
+
+/* Multiple blanks in one sentence */
+.exercise-sentence .fill-input + .sentence-part {
+  margin-left: -0.25rem;
+}

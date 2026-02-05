@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- CUSTOMIZATION POINT: Change the title to match your topic -->
+  <title>Wechselpräpositionen — German B1</title>
+  
+  <!-- Google Fonts: Playfair Display (serif titles), Source Sans 3 (body), Fira Code (mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ========================================
+       THEME: Light/Elegant (Lesson-Based)
+       For reading-heavy, grammar-focused content
+       ======================================== */
+    
+    :root {
+      /* Base Colors */
+      --cream: #faf6f0;
+      --cream-dark: #f0ebe3;
+      --parchment: #e8e0d4;
+      
+      /* Text Colors */
+      --ink: #2c2420;
+      --ink-light: #5a4f46;
+      --ink-faint: #8a7f74;
+      --ink-ghost: #b8afa5;
+      --ink-whisper: #d4cdc5;
+      
+      /* CUSTOMIZATION POINT: Semantic colors for your topic
+         Change these to match your content (e.g., two contrasting concepts) */
+      --accent-1-color: #c0582e;
+      --accent-1-bg: #fdf0ea;
+      --accent-1-border: #e8c4b2;
+      
+      --accent-2-color: #2e6b8a;
+      --accent-2-bg: #eaf3f8;
+      --accent-2-border: #b2d0e0;
+      
+      /* Feedback Colors */
+      --correct: #4a7c59;
+      --correct-bg: #eef5f0;
+      --incorrect: #a84032;
+      --incorrect-bg: #fdf0ee;
+      --gold: #b8943e;
+      --gold-bg: #faf5e8;
+      
+      /* Shadows */
+      --shadow: 0 2px 12px rgba(44,36,32,.06);
+      --shadow-lg: 0 8px 32px rgba(44,36,32,.08);
+      
+      /* Typography */
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Fira Code', 'Courier New', monospace;
+    }
+    
+    /* ========================================
+       BASE STYLES
+       ======================================== */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    
+    /* ========================================
+       CONTAINER & LAYOUT
+       ======================================== */
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* ========================================
+       HEADER
+       ======================================== */
+    
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--parchment);
+    }
+    
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--ink-light);
+      font-weight: 400;
+    }
+    
+    /* ========================================
+       PROGRESS INDICATORS
+       Shows which lesson the user is on
+       ======================================== */
+    
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--parchment);
+      transition: all 0.3s ease;
+    }
+    
+    .progress-dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+    
+    .progress-dot.completed {
+      background: var(--correct);
+    }
+    
+    /* ========================================
+       LESSON CARD
+       Main container for lesson content
+       ======================================== */
+    
+    .lesson {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .lesson-number {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .lesson-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2rem;
+      line-height: 1.3;
+    }
+    
+    /* ========================================
+       CONTENT BUILDING BLOCKS
+       Reusable components for lesson content
+       ======================================== */
+    
+    /* General explanation sections */
+    .explain {
+      margin-bottom: 2rem;
+    }
+    
+    .explain h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    
+    .explain p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink-light);
+    }
+    
+    /* Highlighted grammar rules */
+    .rule-box {
+      background: var(--cream-dark);
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .rule-box.rule-accent-1 {
+      background: var(--accent-1-bg);
+      border-color: var(--accent-1-color);
+    }
+    
+    .rule-box.rule-accent-2 {
+      background: var(--accent-2-bg);
+      border-color: var(--accent-2-color);
+    }
+    
+    .rule-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .rule-accent-1 .rule-label {
+      color: var(--accent-1-color);
+    }
+    
+    .rule-accent-2 .rule-label {
+      color: var(--accent-2-color);
+    }
+    
+    .rule-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    
+    /* Bilingual example sentences */
+    .example {
+      background: var(--cream-dark);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .example .de {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    
+    .example .en {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      font-style: italic;
+    }
+    
+    /* Memory aids and helpful tips */
+    .tip {
+      background: var(--gold-bg);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--ink-light);
+    }
+    
+    /* Comparison tables */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .compare-table th {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 1rem;
+      text-align: left;
+    }
+    
+    .compare-table td {
+      padding: 1rem;
+      border-top: 1px solid var(--parchment);
+    }
+    
+    .compare-table .col-accent-1 {
+      background: var(--accent-1-bg);
+      color: var(--accent-1-color);
+    }
+    
+    .compare-table .col-accent-2 {
+      background: var(--accent-2-bg);
+      color: var(--accent-2-color);
+    }
+    
+    /* Visual separator between sections */
+    .section-sep {
+      height: 1px;
+      background: var(--parchment);
+      margin: 2rem 0;
+    }
+    
+    /* ========================================
+       EXERCISES
+       Interactive practice components
+       ======================================== */
+    
+    .exercise {
+      background: var(--cream-dark);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .exercise.answered {
+      background: white;
+      border: 2px solid var(--parchment);
+    }
+    
+    .exercise.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+    }
+    
+    .exercise.incorrect {
+      background: var(--incorrect-bg);
+      border-color: var(--incorrect);
+    }
+    
+    .exercise-instruction {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .exercise-sentence {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    
+    .exercise-options {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    
+    /* Multiple choice buttons */
+    .option-btn {
+      background: var(--cream);
+      border: 2px solid var(--ink-whisper);
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      font-family: var(--font-sans);
+    }
+    
+    .option-btn:hover {
+      background: white;
+      border-color: var(--ink-faint);
+      transform: translateY(-2px);
+    }
+    
+    .option-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    
+    .option-btn.selected {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+    
+    .option-btn.correct {
+      background: var(--correct);
+      color: white;
+      border-color: var(--correct);
+    }
+    
+    .option-btn.incorrect {
+      background: var(--incorrect);
+      color: white;
+      border-color: var(--incorrect);
+    }
+    
+    /* Fill-in-the-blank input */
+    .fill-input {
+      background: white;
+      border: 2px solid var(--ink-whisper);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      min-width: 150px;
+      transition: all 0.2s ease;
+    }
+    
+    .fill-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184, 148, 62, 0.1);
+    }
+    
+    .fill-input.correct {
+      border-color: var(--correct);
+      background: var(--correct-bg);
+    }
+    
+    .fill-input.incorrect {
+      border-color: var(--incorrect);
+      background: var(--incorrect-bg);
+    }
+    
+    .check-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.95rem;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+    }
+    
+    .check-btn:hover {
+      background: var(--accent-1-color);
+      transform: translateY(-2px);
+    }
+    
+    .check-btn:disabled {
+      background: var(--ink-ghost);
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    /* True/False buttons */
+    .truefalse-options {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .truefalse-btn {
+      flex: 1;
+      background: var(--cream);
+      border: 2px solid var(--ink-whisper);
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+      color: var(--ink);
+    }
+    
+    .truefalse-btn:hover {
+      background: white;
+      border-color: var(--ink-faint);
+      transform: translateY(-2px);
+    }
+    
+    .truefalse-btn.selected {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+    
+    .truefalse-btn.correct {
+      background: var(--correct);
+      color: white;
+      border-color: var(--correct);
+    }
+    
+    .truefalse-btn.incorrect {
+      background: var(--incorrect);
+      color: white;
+      border-color: var(--incorrect);
+    }
+    
+    /* Exercise feedback messages */
+    .exercise-feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      display: none;
+    }
+    
+    .exercise-feedback.show {
+      display: block;
+    }
+    
+    .exercise-feedback.correct {
+      background: var(--correct-bg);
+      color: var(--correct);
+      border: 1px solid var(--correct);
+    }
+    
+    .exercise-feedback.incorrect {
+      background: var(--incorrect-bg);
+      color: var(--incorrect);
+      border: 1px solid var(--incorrect);
+    }
+    
+    /* ========================================
+       NAVIGATION
+       Previous/Next lesson buttons
+       ======================================== */
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .nav-btn {
+      flex: 1;
+      max-width: 200px;
+      background: var(--cream-dark);
+      border: 2px solid var(--parchment);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+    }
+    
+    .nav-btn:hover:not(:disabled) {
+      background: white;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
+    .nav-btn.btn-next {
+      margin-left: auto;
+    }
+    
+    /* ========================================
+       RESULTS SCREEN
+       Shown after final assessment
+       ======================================== */
+    
+    .results {
+      display: none;
+      background: white;
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .results.show {
+      display: block;
+    }
+    
+    .results h2 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    
+    .score-circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: var(--gold-bg);
+      border: 8px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem auto;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .score-value {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    
+    .score-label {
+      font-size: 1.1rem;
+      color: var(--ink-light);
+      margin-bottom: 2rem;
+    }
+    
+    .restart-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: 12px;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+      box-shadow: var(--shadow);
+    }
+    
+    .restart-btn:hover {
+      background: var(--accent-1-color);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* ========================================
+       RESPONSIVE DESIGN
+       Mobile-friendly adjustments
+       ======================================== */
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .lesson {
+        padding: 1.5rem;
+      }
+      
+      .lesson-title {
+        font-size: 1.5rem;
+      }
+      
+      .nav-buttons {
+        flex-direction: column;
+      }
+      
+      .nav-btn {
+        max-width: 100%;
+      }
+      
+      .compare-table {
+        font-size: 0.9rem;
+      }
+      
+      .compare-table th,
+      .compare-table td {
+        padding: 0.75rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .exercise-options {
+        flex-direction: column;
+      }
+      
+      .option-btn {
+        width: 100%;
+      }
+      
+      .score-circle {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .score-value {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER SECTION -->
+    <header>
+      <!-- CUSTOMIZATION POINT: Change the main title and subtitle -->
+      <h1>Wechselpräpositionen</h1>
+      <p class="subtitle">an · auf · hinter · in · neben · über · unter · vor · zwischen</p>
+    </header>
+    
+    <!-- PROGRESS INDICATOR -->
+    <div class="progress-dots" id="progressDots"></div>
+    
+    <!-- LESSON CONTAINER -->
+    <div id="lessonContainer"></div>
+    
+    <!-- NAVIGATION BUTTONS -->
+    <div class="nav-buttons">
+      <button class="nav-btn" id="prevBtn" onclick="prevLesson()" disabled>← Zurück</button>
+      <button class="nav-btn btn-next" id="nextBtn" onclick="nextLesson()">Weiter →</button>
+    </div>
+    
+    <!-- RESULTS SCREEN (shown after final assessment) -->
+    <div class="results" id="resultsScreen">
+      <h2>Glückwunsch!</h2>
+      <div class="score-circle">
+        <span class="score-value" id="finalScore">0%</span>
+      </div>
+      <p class="score-label">Du hast den Test abgeschlossen</p>
+      <button class="restart-btn" onclick="restart()">Neu starten</button>
+    </div>
+  </div>
+
+  <script>
+    /* ========================================
+       DATA SECTION
+       
+       CUSTOMIZATION POINT: This is where you define your lessons!
+       
+       Each lesson has:
+       - number: "Lektion 1", "Lektion 2", or "Abschlusstest" for final assessment
+       - title: Descriptive lesson title
+       - content: HTML content using the building blocks (explain, rule-box, example, tip, compare-table)
+       - exercises: Array of exercise objects
+       
+       Exercise types:
+       - "choice": Multiple choice (default) - requires options array
+       - "fill": Fill-in-the-blank - user types the answer
+       - "truefalse": True/false question - answer should be "richtig" or "falsch"
+       ======================================== */
+    
+    const lessons = [
+      {
+        number: "Lektion 1",
+        title: "Was sind Wechselpräpositionen?",
+        content: `
+          <div class="explain">
+            <h3>Two-Way Prepositions</h3>
+            <p>Wechselpräpositionen (two-way prepositions) are special prepositions that can take either 
+            <strong>Akkusativ</strong> or <strong>Dativ</strong> case depending on the context.</p>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">DIE 9 WECHSELPRÄPOSITIONEN</div>
+            <div class="rule-text">
+              <strong>an</strong> · <strong>auf</strong> · <strong>hinter</strong> · <strong>in</strong> · 
+              <strong>neben</strong> · <strong>über</strong> · <strong>unter</strong> · <strong>vor</strong> · 
+              <strong>zwischen</strong>
+            </div>
+          </div>
+          
+          <div class="rule-box rule-accent-1">
+            <div class="rule-label">AKKUSATIV — Movement / Direction</div>
+            <div class="rule-text">Use Akkusativ when there is <strong>movement toward a destination</strong>.
+            <br>Question: <strong>Wohin?</strong> (Where to?)</div>
+          </div>
+          
+          <div class="example">
+            <div class="de">Ich gehe <strong>in die</strong> Küche.</div>
+            <div class="en">I am going into the kitchen. (movement → accusative)</div>
+          </div>
+          
+          <div class="rule-box rule-accent-2">
+            <div class="rule-label">DATIV — Location / Position</div>
+            <div class="rule-text">Use Dativ when there is <strong>no movement, just location</strong>.
+            <br>Question: <strong>Wo?</strong> (Where?)</div>
+          </div>
+          
+          <div class="example">
+            <div class="de">Ich bin <strong>in der</strong> Küche.</div>
+            <div class="en">I am in the kitchen. (location → dative)</div>
+          </div>
+          
+          <div class="tip">💡 Memory aid: <strong>Wohin? = Akkusativ (action)</strong> | <strong>Wo? = Dativ (static)</strong></div>
+        `,
+        exercises: [
+          {
+            type: "choice",
+            sentence: "Ich stelle das Buch ___ Regal.",
+            answer: "ins",
+            options: ["ins", "im"],
+            explain: "'Wohin?' — You're placing the book INTO the shelf (movement → Akkusativ). 'ins' = in + das.",
+            instruction: "Wählen Sie die richtige Form"
+          },
+          {
+            type: "choice",
+            sentence: "Das Buch steht ___ Regal.",
+            answer: "im",
+            options: ["ins", "im"],
+            explain: "'Wo?' — The book is standing IN the shelf (location → Dativ). 'im' = in + dem."
+          },
+          {
+            type: "truefalse",
+            sentence: "Wechselpräpositionen können nur mit Akkusativ verwendet werden.",
+            answer: "falsch",
+            explain: "Falsch! They can use BOTH Akkusativ (movement) and Dativ (location)."
+          },
+          {
+            type: "fill",
+            sentence: "Ich gehe ___ (in + die) Schule.",
+            answer: "in die",
+            explain: "'Wohin?' — Going to school is movement → Akkusativ. 'in die' (die Schule, feminine)."
+          },
+          {
+            type: "choice",
+            sentence: "Der Hund liegt ___ Tisch.",
+            answer: "unter dem",
+            options: ["unter dem", "unter den"],
+            explain: "'Wo?' — The dog is lying under the table (location → Dativ). 'unter dem' (der Tisch)."
+          }
+        ]
+      },
+      
+      {
+        number: "Lektion 2",
+        title: "Akkusativ vs. Dativ — Die Schlüsselfragen",
+        content: `
+          <div class="explain">
+            <h3>The Key Questions: Wohin? vs. Wo?</h3>
+            <p>The decision between Akkusativ and Dativ depends on whether there is movement or not.</p>
+          </div>
+          
+          <table class="compare-table">
+            <tr>
+              <th class="col-accent-1">AKKUSATIV (Wohin?)</th>
+              <th class="col-accent-2">DATIV (Wo?)</th>
+            </tr>
+            <tr>
+              <td class="col-accent-1">Movement toward a destination</td>
+              <td class="col-accent-2">Static location, no movement</td>
+            </tr>
+            <tr>
+              <td class="col-accent-1">Verbs: gehen, stellen, legen, setzen, hängen</td>
+              <td class="col-accent-2">Verbs: sein, stehen, liegen, sitzen, hängen</td>
+            </tr>
+            <tr>
+              <td class="col-accent-1">Question: <strong>Wohin?</strong></td>
+              <td class="col-accent-2">Question: <strong>Wo?</strong></td>
+            </tr>
+          </table>
+          
+          <div class="section-sep"></div>
+          
+          <div class="example">
+            <div class="de">Ich <strong>hänge</strong> das Bild <strong>an die Wand</strong>. (Wohin?)</div>
+            <div class="en">I hang the picture on the wall. (action → accusative)</div>
+          </div>
+          
+          <div class="example">
+            <div class="de">Das Bild <strong>hängt</strong> <strong>an der Wand</strong>. (Wo?)</div>
+            <div class="en">The picture hangs on the wall. (location → dative)</div>
+          </div>
+          
+          <div class="tip">
+            🎯 <strong>Signal verbs:</strong><br>
+            <strong>Akkusativ:</strong> stellen (to place), legen (to lay), setzen (to set)<br>
+            <strong>Dativ:</strong> stehen (to stand), liegen (to lie), sitzen (to sit)
+          </div>
+        `,
+        exercises: [
+          {
+            type: "choice",
+            sentence: "Die Katze springt ___ Sofa.",
+            answer: "auf das",
+            options: ["auf das", "auf dem"],
+            explain: "'Wohin?' — The cat is jumping ONTO the sofa (movement → Akkusativ). 'auf das'."
+          },
+          {
+            type: "choice",
+            sentence: "Die Katze schläft ___ Sofa.",
+            answer: "auf dem",
+            options: ["auf das", "auf dem"],
+            explain: "'Wo?' — The cat is sleeping ON the sofa (location → Dativ). 'auf dem'."
+          },
+          {
+            type: "fill",
+            sentence: "Ich setze mich ___ (auf + der) Stuhl.",
+            answer: "auf den",
+            explain: "'Wohin?' — Sitting down is movement → Akkusativ. 'auf den' (der Stuhl, masculine accusative = den)."
+          },
+          {
+            type: "choice",
+            sentence: "Wir sitzen ___ Garten.",
+            answer: "im",
+            options: ["in den", "im"],
+            explain: "'Wo?' — We are sitting (already seated) in the garden → Dativ. 'im' = in + dem."
+          },
+          {
+            type: "truefalse",
+            sentence: "Das Verb 'stehen' braucht immer Akkusativ.",
+            answer: "falsch",
+            explain: "Falsch! 'Stehen' (to stand) indicates location, so it takes Dativ."
+          },
+          {
+            type: "fill",
+            sentence: "Ich lege das Baby ___ (in + das) Bett.",
+            answer: "ins",
+            explain: "'Wohin?' — Laying the baby down is movement → Akkusativ. 'ins' = in + das."
+          }
+        ]
+      },
+      
+      {
+        number: "Lektion 3",
+        title: "Die neun Präpositionen im Detail",
+        content: `
+          <div class="explain">
+            <h3>Practicing Each Preposition</h3>
+            <p>Let's look at all nine Wechselpräpositionen with examples in both cases.</p>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">AN (at, on — vertical surfaces)</div>
+            <div class="rule-text">
+              <strong>Akkusativ:</strong> Ich hänge das Poster <strong>an die Wand</strong>.<br>
+              <strong>Dativ:</strong> Das Poster hängt <strong>an der Wand</strong>.
+            </div>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">AUF (on — horizontal surfaces)</div>
+            <div class="rule-text">
+              <strong>Akkusativ:</strong> Ich lege das Buch <strong>auf den Tisch</strong>.<br>
+              <strong>Dativ:</strong> Das Buch liegt <strong>auf dem Tisch</strong>.
+            </div>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">IN (in, into)</div>
+            <div class="rule-text">
+              <strong>Akkusativ:</strong> Sie geht <strong>in die Stadt</strong>.<br>
+              <strong>Dativ:</strong> Sie ist <strong>in der Stadt</strong>.
+            </div>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">NEBEN (next to, beside)</div>
+            <div class="rule-text">
+              <strong>Akkusativ:</strong> Stell den Stuhl <strong>neben den Tisch</strong>.<br>
+              <strong>Dativ:</strong> Der Stuhl steht <strong>neben dem Tisch</strong>.
+            </div>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">ZWISCHEN (between)</div>
+            <div class="rule-text">
+              <strong>Akkusativ:</strong> Er stellt das Auto <strong>zwischen die Häuser</strong>.<br>
+              <strong>Dativ:</strong> Das Auto steht <strong>zwischen den Häusern</strong>.
+            </div>
+          </div>
+        `,
+        exercises: [
+          {
+            type: "choice",
+            sentence: "Ich fahre ___ Stadt.",
+            answer: "in die",
+            options: ["in die", "in der"],
+            explain: "'Wohin?' — Driving into the city is movement → Akkusativ. 'in die'."
+          },
+          {
+            type: "choice",
+            sentence: "Stell die Vase ___ Fenster.",
+            answer: "ans",
+            options: ["ans", "am"],
+            explain: "'Wohin?' — Placing the vase at the window is movement → Akkusativ. 'ans' = an + das."
+          },
+          {
+            type: "fill",
+            sentence: "Der Computer steht ___ (neben + die) Lampe.",
+            answer: "neben der",
+            explain: "'Wo?' — The computer is standing next to the lamp → Dativ. 'neben der' (die Lampe)."
+          },
+          {
+            type: "choice",
+            sentence: "Leg den Schlüssel ___ Tisch.",
+            answer: "auf den",
+            options: ["auf den", "auf dem"],
+            explain: "'Wohin?' — Laying the key down is movement → Akkusativ. 'auf den' (der Tisch)."
+          },
+          {
+            type: "truefalse",
+            sentence: "Bei 'stellen', 'legen' und 'setzen' braucht man immer Dativ.",
+            answer: "falsch",
+            explain: "Falsch! These action verbs (placing, laying, setting) require Akkusativ because they involve movement."
+          }
+        ]
+      },
+      
+      {
+        number: "Lektion 4",
+        title: "Idiomatische Ausdrücke",
+        content: `
+          <div class="explain">
+            <h3>Fixed Expressions and Idioms</h3>
+            <p>Some expressions with Wechselpräpositionen have fixed cases that don't follow the movement rule.</p>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">FESTE AUSDRÜCKE MIT AKKUSATIV</div>
+            <div class="rule-text">
+              • <strong>auf die Post / Bank / Universität gehen</strong> — to go to the post office / bank / university<br>
+              • <strong>aufs Land fahren</strong> — to go to the countryside<br>
+              • <strong>an die Arbeit gehen</strong> — to get to work
+            </div>
+          </div>
+          
+          <div class="rule-box">
+            <div class="rule-label">FESTE AUSDRÜCKE MIT DATIV</div>
+            <div class="rule-text">
+              • <strong>auf dem Land wohnen</strong> — to live in the countryside<br>
+              • <strong>auf der Arbeit sein</strong> — to be at work<br>
+              • <strong>auf dem Markt kaufen</strong> — to buy at the market
+            </div>
+          </div>
+          
+          <div class="example">
+            <div class="de">Ich gehe <strong>auf die Post</strong>.</div>
+            <div class="en">I'm going to the post office. (fixed expression with Akkusativ)</div>
+          </div>
+          
+          <div class="example">
+            <div class="de">Meine Eltern wohnen <strong>auf dem Land</strong>.</div>
+            <div class="en">My parents live in the countryside. (fixed expression with Dativ)</div>
+          </div>
+          
+          <div class="tip">
+            📚 <strong>Note:</strong> Some expressions must be memorized as they don't strictly follow the 
+            movement/location rule. These are idiomatic uses.
+          </div>
+        `,
+        exercises: [
+          {
+            type: "choice",
+            sentence: "Ich gehe heute ___ Post.",
+            answer: "auf die",
+            options: ["auf die", "auf der"],
+            explain: "Fixed expression: 'auf die Post gehen' (to go to the post office) uses Akkusativ."
+          },
+          {
+            type: "choice",
+            sentence: "Sie wohnt ___ Land.",
+            answer: "auf dem",
+            options: ["aufs", "auf dem"],
+            explain: "Fixed expression: 'auf dem Land wohnen' (to live in the countryside) uses Dativ."
+          },
+          {
+            type: "fill",
+            sentence: "Er ist schon ___ (auf + die) Arbeit.",
+            answer: "auf der",
+            explain: "Fixed expression: 'auf der Arbeit sein' (to be at work) uses Dativ, not Akkusativ."
+          },
+          {
+            type: "truefalse",
+            sentence: "'Auf die Bank gehen' bedeutet 'to go to the bank' und braucht Akkusativ.",
+            answer: "richtig",
+            explain: "Richtig! This is a fixed expression with Akkusativ: 'auf die Bank gehen'."
+          },
+          {
+            type: "choice",
+            sentence: "Wir fahren am Wochenende ___ Land.",
+            answer: "aufs",
+            options: ["aufs", "auf dem"],
+            explain: "'Aufs Land fahren' (to go to the countryside) uses Akkusativ. 'aufs' = auf + das."
+          }
+        ]
+      },
+      
+      {
+        number: "Abschlusstest",
+        title: "Final Assessment",
+        content: `
+          <div class="explain">
+            <h3>Testen Sie Ihr Wissen!</h3>
+            <p>This final test covers all concepts: basic rules, signal verbs, all nine prepositions, 
+            and idiomatic expressions. Take your time and think about each question carefully!</p>
+          </div>
+          
+          <div class="tip">
+            🎯 <strong>Strategy:</strong> For each question, ask yourself: "Wohin?" (movement → Akkusativ) 
+            or "Wo?" (location → Dativ). Look for signal verbs!
+          </div>
+        `,
+        exercises: [
+          {
+            sentence: "Die Kinder spielen ___ Garten.",
+            answer: "im",
+            options: ["in den", "im"],
+            explain: "'Wo?' — The children are playing in the garden (location → Dativ). 'im' = in + dem."
+          },
+          {
+            type: "fill",
+            sentence: "Ich hänge das Bild ___ (an + die) Wand.",
+            answer: "an die",
+            explain: "'Wohin?' — Hanging the picture is an action → Akkusativ. 'an die'."
+          },
+          {
+            type: "choice",
+            sentence: "Der Hund läuft ___ Haus.",
+            answer: "ins",
+            options: ["ins", "im"],
+            explain: "'Wohin?' — The dog is running into the house (movement → Akkusativ). 'ins' = in + das."
+          },
+          {
+            type: "truefalse",
+            sentence: "Bei 'wo?' benutzt man immer Akkusativ.",
+            answer: "falsch",
+            explain: "Falsch! 'Wo?' indicates location, so we use Dativ, not Akkusativ."
+          },
+          {
+            sentence: "Stell die Flasche ___ Kühlschrank!",
+            answer: "in den",
+            options: ["in den", "im"],
+            explain: "'Wohin?' — Putting the bottle into the refrigerator → Akkusativ. 'in den' (der Kühlschrank)."
+          },
+          {
+            type: "fill",
+            sentence: "Das Auto steht ___ (zwischen + die, Plural) Bäume.",
+            answer: "zwischen den",
+            explain: "'Wo?' — The car is standing between the trees → Dativ. Plural dative = 'den Bäumen', but we write 'zwischen den'."
+          },
+          {
+            type: "choice",
+            sentence: "Er sitzt ___ Stuhl.",
+            answer: "auf dem",
+            options: ["auf den", "auf dem"],
+            explain: "'Wo?' — He is sitting on the chair (location → Dativ). 'auf dem'."
+          },
+          {
+            sentence: "Ich gehe ___ Universität.",
+            answer: "an die",
+            options: ["an die", "an der"],
+            explain: "Fixed expression: 'an die Universität gehen' uses Akkusativ."
+          },
+          {
+            type: "truefalse",
+            sentence: "Das Verb 'liegen' (to lie) signalisiert eine Bewegung.",
+            answer: "falsch",
+            explain: "Falsch! 'Liegen' indicates a static position, not movement, so it takes Dativ."
+          },
+          {
+            type: "fill",
+            sentence: "Die Lampe hängt ___ (über + der) Tisch.",
+            answer: "über dem",
+            explain: "'Wo?' — The lamp hangs over the table (location → Dativ). 'über dem'."
+          },
+          {
+            sentence: "Leg das Buch ___ Regal!",
+            answer: "ins",
+            options: ["ins", "im"],
+            explain: "'Wohin?' — Laying the book (into the shelf) is movement → Akkusativ. 'ins' = in + das."
+          },
+          {
+            type: "choice",
+            sentence: "Sie arbeitet ___ Bank.",
+            answer: "auf der",
+            options: ["auf die", "auf der"],
+            explain: "'Wo?' — She works at the bank (location → Dativ). 'auf der Bank'."
+          },
+          {
+            type: "truefalse",
+            sentence: "Wechselpräpositionen heißen so, weil sie zwischen Akkusativ und Dativ wechseln können.",
+            answer: "richtig",
+            explain: "Richtig! They 'change' (wechseln) between the two cases depending on context."
+          },
+          {
+            sentence: "Wir fahren morgen ___ Stadt.",
+            answer: "in die",
+            options: ["in die", "in der"],
+            explain: "'Wohin?' — Driving into the city is movement → Akkusativ. 'in die'."
+          },
+          {
+            type: "fill",
+            sentence: "Die Kinder verstecken sich ___ (hinter + der) Baum.",
+            answer: "hinter dem",
+            explain: "'Wo?' — The children are hiding behind the tree (location → Dativ). 'hinter dem'."
+          }
+        ]
+      }
+    ];
+    
+    /* ========================================
+       APP STATE
+       Tracks current lesson and scores
+       ======================================== */
+    
+    let currentLesson = 0;
+    let scores = {};  // Tracks score for each lesson by index
+    
+    /* ========================================
+       INITIALIZATION
+       Runs when page loads
+       ======================================== */
+    
+    function init() {
+      renderProgressDots();
+      renderLesson();
+      updateNavButtons();
+    }
+    
+    /* ========================================
+       PROGRESS DOTS RENDERING
+       Shows visual indicator of lesson progress
+       ======================================== */
+    
+    function renderProgressDots() {
+      const dotsContainer = document.getElementById('progressDots');
+      dotsContainer.innerHTML = lessons.map((_, index) => {
+        let className = 'progress-dot';
+        if (index < currentLesson) className += ' completed';
+        if (index === currentLesson) className += ' active';
+        return `<div class="${className}"></div>`;
+      }).join('');
+    }
+    
+    /* ========================================
+       LESSON RENDERING
+       Displays current lesson content and exercises
+       ======================================== */
+    
+    function renderLesson() {
+      const lesson = lessons[currentLesson];
+      const container = document.getElementById('lessonContainer');
+      
+      let html = `
+        <div class="lesson">
+          <div class="lesson-number">${lesson.number}</div>
+          <h2 class="lesson-title">${lesson.title}</h2>
+          ${lesson.content}
+          <div class="section-sep"></div>
+      `;
+      
+      // Render exercises
+      lesson.exercises.forEach((ex, index) => {
+        const exId = `ex-${currentLesson}-${index}`;
+        const type = ex.type || 'choice';
+        const instruction = ex.instruction || getDefaultInstruction(type);
+        
+        html += `
+          <div class="exercise" id="${exId}">
+            <div class="exercise-instruction">${instruction}</div>
+            <div class="exercise-sentence">${ex.sentence}</div>
+        `;
+        
+        if (type === 'choice') {
+          const options = ex.options || ['als', 'wenn'];
+          html += '<div class="exercise-options">';
+          options.forEach(opt => {
+            html += `<button class="option-btn" onclick="answerChoice('${exId}', '${opt}', ${currentLesson}, ${index})">${opt}</button>`;
+          });
+          html += '</div>';
+        } else if (type === 'fill') {
+          html += `
+            <div class="exercise-options">
+              <input type="text" class="fill-input" id="${exId}-input" placeholder="Ihre Antwort">
+              <button class="check-btn" onclick="answerFill('${exId}', ${currentLesson}, ${index})">Prüfen</button>
+            </div>
+          `;
+        } else if (type === 'truefalse') {
+          html += `
+            <div class="exercise-options truefalse-options">
+              <button class="truefalse-btn" onclick="answerTrueFalse('${exId}', 'richtig', ${currentLesson}, ${index})">✓ Richtig</button>
+              <button class="truefalse-btn" onclick="answerTrueFalse('${exId}', 'falsch', ${currentLesson}, ${index})">✗ Falsch</button>
+            </div>
+          `;
+        }
+        
+        html += `
+            <div class="exercise-feedback" id="${exId}-feedback"></div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    
+    /* ========================================
+       HELPER: Get default instruction for exercise type
+       ======================================== */
+    
+    function getDefaultInstruction(type) {
+      const instructions = {
+        choice: 'Wählen Sie die richtige Antwort',
+        fill: 'Ergänzen Sie',
+        truefalse: 'Richtig oder falsch?'
+      };
+      return instructions[type] || 'Wählen Sie die richtige Antwort';
+    }
+    
+    /* ========================================
+       EXERCISE HANDLERS
+       Handle user interactions with exercises
+       ======================================== */
+    
+    function answerChoice(exId, selected, lessonIdx, exIdx) {
+      const exercise = lessons[lessonIdx].exercises[exIdx];
+      const exDiv = document.getElementById(exId);
+      const feedback = document.getElementById(`${exId}-feedback`);
+      const buttons = exDiv.querySelectorAll('.option-btn');
+      
+      // Disable all buttons
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        if (btn.textContent.trim() === selected) {
+          btn.classList.add('selected');
+        }
+      });
+      
+      // Check answer
+      const isCorrect = selected.toLowerCase().trim() === exercise.answer.toLowerCase().trim();
+      
+      // Update exercise and feedback
+      exDiv.classList.add('answered', isCorrect ? 'correct' : 'incorrect');
+      feedback.className = `exercise-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      feedback.innerHTML = isCorrect 
+        ? `✓ Richtig! ${exercise.explain}`
+        : `✗ Die richtige Antwort ist "${exercise.answer}". ${exercise.explain}`;
+      
+      // Highlight correct answer
+      buttons.forEach(btn => {
+        if (btn.textContent.trim() === exercise.answer) {
+          btn.classList.add('correct');
+        } else if (btn.textContent.trim() === selected && !isCorrect) {
+          btn.classList.add('incorrect');
+        }
+      });
+      
+      // Update score
+      updateScore(lessonIdx, exIdx, isCorrect);
+    }
+    
+    function answerFill(exId, lessonIdx, exIdx) {
+      const exercise = lessons[lessonIdx].exercises[exIdx];
+      const exDiv = document.getElementById(exId);
+      const input = document.getElementById(`${exId}-input`);
+      const feedback = document.getElementById(`${exId}-feedback`);
+      const checkBtn = exDiv.querySelector('.check-btn');
+      
+      const userAnswer = input.value.trim().toLowerCase();
+      const correctAnswer = exercise.answer.toLowerCase();
+      
+      // Check answer (normalize for comparison)
+      const isCorrect = userAnswer === correctAnswer;
+      
+      // Disable input and button
+      input.disabled = true;
+      checkBtn.disabled = true;
+      
+      // Update styling
+      exDiv.classList.add('answered', isCorrect ? 'correct' : 'incorrect');
+      input.classList.add(isCorrect ? 'correct' : 'incorrect');
+      feedback.className = `exercise-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      feedback.innerHTML = isCorrect 
+        ? `✓ Richtig! ${exercise.explain}`
+        : `✗ Die richtige Antwort ist "${exercise.answer}". ${exercise.explain}`;
+      
+      // Update score
+      updateScore(lessonIdx, exIdx, isCorrect);
+    }
+    
+    function answerTrueFalse(exId, selected, lessonIdx, exIdx) {
+      const exercise = lessons[lessonIdx].exercises[exIdx];
+      const exDiv = document.getElementById(exId);
+      const feedback = document.getElementById(`${exId}-feedback`);
+      const buttons = exDiv.querySelectorAll('.truefalse-btn');
+      
+      // Disable buttons and mark selection
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        const btnValue = btn.textContent.includes('Richtig') ? 'richtig' : 'falsch';
+        if (btnValue === selected) {
+          btn.classList.add('selected');
+        }
+      });
+      
+      // Check answer
+      const isCorrect = selected.toLowerCase() === exercise.answer.toLowerCase();
+      
+      // Update exercise and feedback
+      exDiv.classList.add('answered', isCorrect ? 'correct' : 'incorrect');
+      feedback.className = `exercise-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      feedback.innerHTML = isCorrect 
+        ? `✓ Richtig! ${exercise.explain}`
+        : `✗ ${exercise.explain}`;
+      
+      // Highlight correct/incorrect buttons
+      buttons.forEach(btn => {
+        const btnValue = btn.textContent.includes('Richtig') ? 'richtig' : 'falsch';
+        if (btnValue === exercise.answer.toLowerCase()) {
+          btn.classList.add('correct');
+        } else if (btnValue === selected && !isCorrect) {
+          btn.classList.add('incorrect');
+        }
+      });
+      
+      // Update score
+      updateScore(lessonIdx, exIdx, isCorrect);
+    }
+    
+    /* ========================================
+       SCORE TRACKING
+       Tracks which exercises were answered correctly
+       ======================================== */
+    
+    function updateScore(lessonIdx, exIdx, isCorrect) {
+      if (!scores[lessonIdx]) {
+        scores[lessonIdx] = {};
+      }
+      scores[lessonIdx][exIdx] = isCorrect;
+    }
+    
+    function getLessonScore(lessonIdx) {
+      if (!scores[lessonIdx]) return 0;
+      const answers = Object.values(scores[lessonIdx]);
+      if (answers.length === 0) return 0;
+      const correct = answers.filter(a => a).length;
+      return Math.round((correct / answers.length) * 100);
+    }
+    
+    function getTotalScore() {
+      let totalCorrect = 0;
+      let totalAnswered = 0;
+      
+      Object.values(scores).forEach(lessonScores => {
+        Object.values(lessonScores).forEach(isCorrect => {
+          totalAnswered++;
+          if (isCorrect) totalCorrect++;
+        });
+      });
+      
+      return totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+    }
+    
+    /* ========================================
+       NAVIGATION
+       Move between lessons
+       ======================================== */
+    
+    function nextLesson() {
+      // Check if this is the final assessment
+      if (lessons[currentLesson].number === 'Abschlusstest') {
+        showResults();
+        return;
+      }
+      
+      if (currentLesson < lessons.length - 1) {
+        currentLesson++;
+        renderProgressDots();
+        renderLesson();
+        updateNavButtons();
+        window.scrollTo(0, 0);
+      }
+    }
+    
+    function prevLesson() {
+      if (currentLesson > 0) {
+        currentLesson--;
+        renderProgressDots();
+        renderLesson();
+        updateNavButtons();
+        window.scrollTo(0, 0);
+      }
+    }
+    
+    function updateNavButtons() {
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      prevBtn.disabled = currentLesson === 0;
+      
+      // Change text for final lesson
+      if (lessons[currentLesson].number === 'Abschlusstest') {
+        nextBtn.textContent = 'Ergebnisse anzeigen →';
+      } else {
+        nextBtn.textContent = 'Weiter →';
+      }
+    }
+    
+    /* ========================================
+       RESULTS SCREEN
+       Show final score after assessment
+       ======================================== */
+    
+    function showResults() {
+      document.getElementById('lessonContainer').style.display = 'none';
+      document.querySelector('.nav-buttons').style.display = 'none';
+      document.getElementById('progressDots').style.display = 'none';
+      
+      const resultsScreen = document.getElementById('resultsScreen');
+      const scoreDisplay = document.getElementById('finalScore');
+      
+      scoreDisplay.textContent = getTotalScore() + '%';
+      resultsScreen.classList.add('show');
+    }
+    
+    function restart() {
+      currentLesson = 0;
+      scores = {};
+      
+      document.getElementById('lessonContainer').style.display = 'block';
+      document.querySelector('.nav-buttons').style.display = 'flex';
+      document.getElementById('progressDots').style.display = 'flex';
+      document.getElementById('resultsScreen').classList.remove('show');
+      
+      renderProgressDots();
+      renderLesson();
+      updateNavButtons();
+      window.scrollTo(0, 0);
+    }
+    
+    /* ========================================
+       START THE APP
+       ======================================== */
+    
+    init();
+  </script>
+</body>
+</html>

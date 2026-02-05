@@ -1,0 +1,156 @@
+/**
+ * Ordering Exercise Styles
+ * German: "Reihenfolge" / "Bringen Sie in die richtige Reihenfolge"
+ */
+
+/* Order Hint Text */
+.order-hint {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* Word Buttons Container */
+.order-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--cream);
+  border-radius: 8px;
+  border: 2px dashed var(--ink-whisper);
+}
+
+/* Individual Word Button */
+.word-btn {
+  background: white;
+  border: 2px solid var(--ink-whisper);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-family: inherit;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .word-btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+.word-btn:hover:not(:disabled):not(.selected) {
+  border-color: var(--ink-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  background: var(--cream-dark);
+}
+
+.word-btn:focus {
+  outline: 3px solid var(--ink-light);
+  outline-offset: 2px;
+}
+
+.word-btn.selected {
+  background: var(--ink-ghost);
+  color: var(--ink-light);
+  border-color: var(--ink-ghost);
+  opacity: 0.5;
+  cursor: default;
+  position: relative;
+}
+
+/* Number badge for selected words */
+.word-btn.selected::after {
+  content: attr(data-selected-order);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--ink);
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.word-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* Result Display Area */
+.order-result {
+  background: var(--cream);
+  border: 2px dashed var(--ink-whisper);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  min-height: 80px;
+}
+
+.result-label {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.result-sentence {
+  font-size: 1.1rem;
+  color: var(--ink);
+  min-height: 1.5rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .result-sentence {
+    font-size: 1rem;
+  }
+}
+
+/* Result states */
+.result-sentence.correct-answer {
+  background: var(--correct-bg);
+  border: 2px solid var(--correct);
+  color: var(--correct);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.result-sentence.incorrect-answer {
+  background: var(--incorrect-bg);
+  border: 2px solid var(--incorrect);
+  color: var(--incorrect);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+/* Button group for check/reset */
+.ordering-exercise .check-btn {
+  margin-right: 0.75rem;
+}
+
+/* Empty state */
+.result-sentence:empty::before {
+  content: 'Wählen Sie die Wörter aus...';
+  color: var(--ink-ghost);
+  font-style: italic;
+}

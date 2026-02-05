@@ -1,0 +1,263 @@
+/* ============================================
+   ANIMATION & TRANSITIONS
+   ============================================ */
+
+/* ============================================
+   TRANSITIONS
+   ============================================ */
+
+/* Standard Button/Interactive Transitions */
+.transition-standard {
+  transition: all .2s;
+}
+
+/* Longer Transitions for State Changes */
+.transition-long {
+  transition: all .25s;
+}
+
+/* Border Color Transitions */
+.transition-border {
+  transition: border-color .3s;
+}
+
+/* Background & Shadow Transitions */
+.transition-bg-shadow {
+  transition: background .4s, box-shadow .4s;
+}
+
+/* Flashcard Flip Transition */
+.transition-flip {
+  transition: transform .55s cubic-bezier(.4,.0,.2,1);
+}
+
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+/* Fade In (Light Theme - Lesson Views) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lesson {
+  display: none;
+  animation: fadeIn .4s ease;
+}
+
+.lesson.active {
+  display: block;
+}
+
+/* Fade Slide In (Dark Theme - List Items) */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.verb-row {
+  animation: fadeSlideIn .3s ease both;
+}
+
+/* Pulse Animation (for emphasis) */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+
+/* Subtle Lift on Hover */
+.hover-lift:hover {
+  transform: translateY(-1px);
+}
+
+/* Shadow Expansion on Hover */
+.hover-shadow {
+  box-shadow: var(--shadow);
+  transition: box-shadow .25s;
+}
+
+.hover-shadow:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Opacity Fade on Hover */
+.hover-opacity {
+  transition: opacity .2s;
+}
+
+.hover-opacity:hover {
+  opacity: .8;
+}
+
+
+/* ============================================
+   VIEW TRANSITIONS
+   ============================================ */
+
+/* Hidden/Active View States */
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+/* Tab Switching Animation */
+.view.active {
+  animation: fadeIn .3s ease;
+}
+
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+/* Simple Spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Skeleton Loading (shimmer effect) */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    to right,
+    var(--surface) 0%,
+    var(--surface-2) 20%,
+    var(--surface) 40%,
+    var(--surface) 100%
+  );
+  background-size: 800px 104px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+
+/* ============================================
+   PROGRESS ANIMATIONS
+   ============================================ */
+
+/* Progress Dot Completion */
+.progress-dot {
+  transition: background .4s, box-shadow .4s;
+}
+
+/* Score Counter Animation */
+@keyframes countUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.score-animate {
+  animation: countUp .3s ease;
+}
+
+
+/* ============================================
+   FEEDBACK ANIMATIONS
+   ============================================ */
+
+/* Correct Answer Flash */
+@keyframes correctFlash {
+  0%, 100% {
+    background: var(--correct-bg);
+  }
+  50% {
+    background: var(--correct);
+  }
+}
+
+.flash-correct {
+  animation: correctFlash .6s ease;
+}
+
+/* Incorrect Shake */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+.shake-incorrect {
+  animation: shake .4s ease;
+}
+
+/* Feedback Slide In */
+.exercise-feedback {
+  display: none;
+  margin-top: 12px;
+}
+
+.exercise-feedback.show {
+  display: block;
+  animation: fadeSlideIn .3s ease;
+}
+
+
+/* ============================================
+   RESPONSIVE ANIMATION CONSIDERATIONS
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

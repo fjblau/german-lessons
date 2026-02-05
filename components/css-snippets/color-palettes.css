@@ -1,0 +1,140 @@
+/* ============================================
+   COLOR PALETTES
+   ============================================ */
+
+/* ============================================
+   LIGHT/ELEGANT THEME (Lesson-Based Apps)
+   ============================================
+   Best for: Grammar lessons, reading-heavy content,
+   contrasting concepts, rules and patterns
+   ============================================ */
+
+:root {
+  /* Base Colors */
+  --cream: #faf6f0;
+  --cream-dark: #f0ebe3;
+  --parchment: #e8e0d4;
+  
+  /* Text Colors */
+  --ink: #2c2420;
+  --ink-light: #5a4f46;
+  --ink-faint: #8a7f74;
+  --ink-ghost: #b8afa5;
+  --ink-whisper: #d4cdc5;
+  
+  /* Semantic Colors (Example: als vs. wenn) */
+  /* Replace with your own semantic accent colors */
+  --accent-1-color: #c0582e;
+  --accent-1-bg: #fdf0ea;
+  --accent-1-border: #e8c4b2;
+  
+  --accent-2-color: #2e6b8a;
+  --accent-2-bg: #eaf3f8;
+  --accent-2-border: #b2d0e0;
+  
+  /* Feedback Colors */
+  --correct: #4a7c59;
+  --correct-bg: #eef5f0;
+  --incorrect: #a84032;
+  --incorrect-bg: #fdf0ee;
+  --gold: #b8943e;
+  --gold-bg: #faf5e8;
+  
+  /* Shadows */
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(44,36,32,.06);
+  --shadow-lg: 0 8px 32px rgba(44,36,32,.08);
+}
+
+/* Paper Texture Background */
+body {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.015'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ============================================
+   DARK/MODERN THEME (Multi-View Apps)
+   ============================================
+   Best for: Vocabulary drilling, verb tables,
+   reference lists, quiz-focused apps
+   ============================================ */
+
+:root {
+  /* Base Colors */
+  --bg: #0e0f13;
+  --surface: #16171d;
+  --surface-2: #1e1f27;
+  --surface-3: #262731;
+  
+  /* Border Colors */
+  --border: #2a2b36;
+  --border-light: #35364280;
+  
+  /* Text Colors */
+  --text: #e8e6e3;
+  --text-dim: #8a8997;
+  --text-muted: #5c5b6b;
+  
+  /* CEFR Level Accent Colors */
+  --accent-a1: #4fc3f7;
+  --accent-a2: #81c784;
+  --accent-b1: #ffb74d;
+  --accent-b2: #ef5350;
+  --accent-c1: #ce93d8;
+  --accent-c2: #f48fb1;
+  
+  /* Glow Effects */
+  --glow-a1: rgba(79,195,247,.12);
+  --glow-a2: rgba(129,199,132,.12);
+  --glow-b1: rgba(255,183,77,.12);
+  --glow-b2: rgba(239,83,80,.12);
+  --glow-c1: rgba(206,147,216,.12);
+  --glow-c2: rgba(244,143,177,.12);
+  
+  /* Feedback Colors */
+  --correct: #66bb6a;
+  --incorrect: #ef5350;
+  
+  /* Shapes */
+  --card-radius: 16px;
+}
+
+/* Ambient Background Gradients */
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -40%; 
+  left: -20%;
+  width: 80vw; 
+  height: 80vw;
+  background: radial-gradient(circle, rgba(79,195,247,.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -30%; 
+  right: -20%;
+  width: 70vw; 
+  height: 70vw;
+  background: radial-gradient(circle, rgba(206,147,216,.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}

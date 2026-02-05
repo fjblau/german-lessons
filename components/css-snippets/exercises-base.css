@@ -1,0 +1,203 @@
+/**
+ * Base Exercise Styles
+ * Common styling for all exercise types
+ */
+
+/* Exercise Container */
+.exercise {
+  background: var(--cream-dark);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .exercise {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Exercise Instruction */
+.exercise-instruction {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+/* Exercise Sentence */
+.exercise-sentence {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .exercise-sentence {
+    font-size: 1rem;
+  }
+}
+
+/* Exercise Options Container */
+.exercise-options {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+/* Base Option Button */
+.option-btn {
+  background: var(--cream);
+  border: 2px solid var(--ink-whisper);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+@media (max-width: 640px) {
+  .option-btn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: var(--ink-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.option-btn:focus {
+  outline: 3px solid var(--ink-light);
+  outline-offset: 2px;
+}
+
+.option-btn.selected {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+.option-btn.correct {
+  background: var(--correct);
+  color: white;
+  border-color: var(--correct);
+}
+
+.option-btn.incorrect {
+  background: var(--incorrect);
+  color: white;
+  border-color: var(--incorrect);
+}
+
+.option-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Exercise Feedback */
+.exercise-feedback {
+  display: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exercise-feedback.show {
+  display: block;
+}
+
+.exercise-feedback.correct {
+  background: var(--correct-bg);
+  color: var(--correct);
+  border-left: 4px solid var(--correct);
+}
+
+.exercise-feedback.incorrect {
+  background: var(--incorrect-bg);
+  color: var(--incorrect);
+  border-left: 4px solid var(--incorrect);
+}
+
+/* Check Button */
+.check-btn {
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+}
+
+.check-btn:hover:not(:disabled) {
+  background: var(--ink-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.check-btn:focus {
+  outline: 3px solid var(--ink-light);
+  outline-offset: 2px;
+}
+
+.check-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Reset Button */
+.reset-btn {
+  background: transparent;
+  color: var(--ink-light);
+  border: 2px solid var(--ink-whisper);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+}
+
+.reset-btn:hover {
+  border-color: var(--ink-light);
+  color: var(--ink);
+}
+
+.reset-btn:focus {
+  outline: 3px solid var(--ink-light);
+  outline-offset: 2px;
+}
